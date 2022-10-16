@@ -1,4 +1,4 @@
 .PHONY: dev
 dev:
 	@echo "Starting development server..."
-	@uvicorn main:app --reload
+	@uvicorn rest_wordle:app --reload
