@@ -4,6 +4,8 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
+from utils import generate_master_mind_result
+
 words = (Path(__file__).parent / "wordlist.txt").read_text().splitlines()
 secret_word = random.choice(words)
 print(secret_word)
@@ -31,15 +33,6 @@ async def wordlist():
 async def guess(word: str):
     word = word.lower()
 
-    def generate_mastermind_result(word):
-        for idx, c in enumerate(word):
-            if c not in secret_word:
-                yield "black"
-            elif c == secret_word[idx]:
-                yield "green"
-            else:
-                yield "yellow"
-
     if word not in words:
         return JSONResponse(status_code=404, content={"message": "word not found"})
     if word == secret_word:
@@ -52,6 +45,8 @@ async def guess(word: str):
             status_code=202,
             content={
                 "word": word,
-                "mastermind_result": list(generate_mastermind_result(word)),
+                "mastermind_result": list(
+                    generate_mastermind_result(word=word, secret_word=secret_word)
+                ),
             },
         )
