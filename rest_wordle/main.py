@@ -4,9 +4,9 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
-from utils import generate_master_mind_result
+from .utils import generate_master_mind_result
 
-words = (Path(__file__).parent / "wordlist.txt").read_text().splitlines()
+words = (Path(__file__).parent.parent / "wordlist.txt").read_text().splitlines()
 secret_word = random.choice(words)
 print(secret_word)
 app = FastAPI()
