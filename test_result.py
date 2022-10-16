@@ -1,6 +1,6 @@
 import pytest
 
-from utils import generate_master_mind_result
+from rest_wordle.utils import generate_master_mind_result
 
 G = "green"
 Y = "yellow"
