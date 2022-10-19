@@ -1,6 +1,6 @@
 import pytest
 
-from rest_wordle.utils import generate_master_mind_result
+from rest_wordle.utils import get_hints
 
 G = "green"
 Y = "yellow"
@@ -22,4 +22,4 @@ B = "black"
     ],
 )
 def test_mastermind(word, secret_word, expected):
-    assert generate_master_mind_result(word, secret_word) == expected
+    assert get_hints(word, secret_word) == expected

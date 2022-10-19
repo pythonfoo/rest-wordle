@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-def generate_master_mind_result(word: str, secret_word: str):
+def get_hints(word: str, secret_word: str):
     word = word.lower()
 
     result = [""] * len(word)
