@@ -45,7 +45,7 @@ async def guess(word: str):
             content={
                 "word": word,
                 "mastermind_result": list(
-                    generate_mastermind_result(word=word, secret_word=secret_word)
+                    get_hints(word=word, secret_word=secret_word)
                 ),
             },
         )
